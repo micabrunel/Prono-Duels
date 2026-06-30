@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1a0008" />
+  <title>Prono-Duels ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>" />
+</head>
+<body>
+  <div class="glow"></div>
+  <main id="app">
+
+    <!-- ÉCRAN D'ACCUEIL -->
+    <section class="screen active" id="screen-welcome">
+      <div class="hero">
+        <div class="hero-emoji">❤️‍🔥</div>
+        <h1>Prono-Duels</h1>
+        <p class="subtitle">Le petit jeu coquin rien que pour nous deux.<br />Ce soir, c'est <strong>toi</strong> qui décides.</p>
+        <button class="btn primary" id="go-setup">Commencer la soirée</button>
+        <p class="micro">Choix 1 ou Choix 2… à toi de tenter ta chance 😏</p>
+      </div>
+    </section>
+
+    <!-- ÉCRAN RÉGLAGES -->
+    <section class="screen" id="screen-setup">
+      <div class="card-panel">
+        <h2>Avant de jouer…</h2>
+
+        <label class="field-label" for="player-name">Ton prénom</label>
+        <input type="text" id="player-name" class="text-input" placeholder="Ex : ma chérie" autocomplete="off" />
+
+        <label class="field-label">Jusqu'où tu te sens d'aller ce soir&nbsp;?</label>
+        <p class="hint">Tu pourras toujours t'arrêter avant — c'est juste ta limite max pour ce soir.</p>
+
+        <div class="level-picker" id="level-picker"></div>
+
+        <button class="btn primary" id="start-game">C'est parti 🔥</button>
+      </div>
+    </section>
+
+    <!-- ÉCRAN DE JEU -->
+    <section class="screen" id="screen-play">
+      <header class="play-header">
+        <div class="level-badge" id="level-badge"></div>
+        <div class="progress">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </header>
+
+      <div class="play-area" id="play-area">
+        <!-- Carte de choix -->
+        <div class="choice-stage" id="choice-stage">
+          <p class="teaser" id="card-teaser"></p>
+          <div class="choices">
+            <button class="choice-btn" data-choice="0">
+              <span class="choice-num">1</span>
+              <span class="choice-text">Choix&nbsp;1</span>
+            </button>
+            <button class="choice-btn" data-choice="1">
+              <span class="choice-num">2</span>
+              <span class="choice-text">Choix&nbsp;2</span>
+            </button>
+          </div>
+          <p class="micro">Pioche à l'aveugle… tu découvriras après 😉</p>
+        </div>
+
+        <!-- Révélation -->
+        <div class="reveal-stage" id="reveal-stage">
+          <div class="reveal-card" id="reveal-card">
+            <div class="reveal-tag">Ton gage</div>
+            <p class="reveal-action" id="reveal-action"></p>
+          </div>
+          <button class="btn primary" id="next-card">Carte suivante →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉCRAN TRANSITION DE NIVEAU -->
+    <section class="screen" id="screen-transition">
+      <div class="card-panel center">
+        <div class="trans-emoji" id="trans-emoji">🔥</div>
+        <h2 id="trans-title">Niveau terminé !</h2>
+        <p id="trans-text" class="trans-text"></p>
+        <div class="trans-buttons">
+          <button class="btn primary" id="continue-level">Continuer ↑</button>
+          <button class="btn ghost" id="stop-here">Rester là pour ce soir</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉCRAN FINAL -->
+    <section class="screen" id="screen-end">
+      <div class="card-panel center">
+        <div class="hero-emoji">🌙</div>
+        <h2 id="end-title">Belle soirée à vous deux…</h2>
+        <p id="end-text" class="trans-text"></p>
+        <div id="recap-status" class="recap-status"></div>
+        <button class="btn ghost" id="replay">Rejouer une autre fois</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
