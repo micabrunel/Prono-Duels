@@ -41,6 +41,20 @@ export const LEVELS = [
         ]
       },
       {
+        teaser: "Tout en délicatesse…",
+        choices: [
+          { label: "Choix 1", action: "Caresse-lui le visage et passe doucement le pouce sur ses lèvres." },
+          { label: "Choix 2", action: "Front contre front, respirez ensemble en silence pendant 30 secondes." }
+        ]
+      },
+      {
+        teaser: "Un jeu de regards…",
+        choices: [
+          { label: "Choix 1", action: "Décris-lui à voix basse ce que tu aimerais qu'il te fasse plus tard ce soir." },
+          { label: "Choix 2", action: "Mets-toi sur ton trente-et-un (ou ton plus joli sous-vêtement) rien que pour lui." }
+        ]
+      },
+      {
         teaser: "Le premier vrai baiser de la soirée…",
         choices: [
           { label: "Choix 1", action: "Embrasse-le langoureusement pendant 15 secondes." },
@@ -82,6 +96,20 @@ export const LEVELS = [
         choices: [
           { label: "Choix 1", action: "Embrasse-le dans le cou puis descends jusqu'à la clavicule." },
           { label: "Choix 2", action: "Parsème son ventre de baisers, en remontant doucement." }
+        ]
+      },
+      {
+        teaser: "Le souffle court…",
+        choices: [
+          { label: "Choix 1", action: "Souffle doucement dans son cou puis embrasse l'endroit, en alternant chaud et léger." },
+          { label: "Choix 2", action: "Mordille-lui le lobe de l'oreille en lui chuchotant une envie." }
+        ]
+      },
+      {
+        teaser: "On joue à se frôler…",
+        choices: [
+          { label: "Choix 1", action: "Caresse-lui les cuisses par-dessus le pantalon, sans jamais aller plus haut." },
+          { label: "Choix 2", action: "Assieds-toi face à lui, jambes autour de sa taille, et collez vos fronts." }
         ]
       },
       {
@@ -129,6 +157,20 @@ export const LEVELS = [
         ]
       },
       {
+        teaser: "Au creux de l'oreille…",
+        choices: [
+          { label: "Choix 1", action: "Décris-lui, en détail, ce que tu comptes lui faire au niveau suivant." },
+          { label: "Choix 2", action: "Demande-lui de te dire, à voix haute, ce dont il a le plus envie là, maintenant." }
+        ]
+      },
+      {
+        teaser: "Le toucher se précise…",
+        choices: [
+          { label: "Choix 1", action: "Caresse-le là où il aime, par-dessus le tissu, jusqu'à ce qu'il en redemande." },
+          { label: "Choix 2", action: "Place sa main sur toi et montre-lui exactement le rythme que tu veux." }
+        ]
+      },
+      {
         teaser: "Une règle du jeu…",
         choices: [
           { label: "Choix 1", action: "Interdiction de l'embrasser sur la bouche pendant 3 minutes. Tout le reste est permis." },
@@ -173,6 +215,13 @@ export const LEVELS = [
         ]
       },
       {
+        teaser: "À mains liées…",
+        choices: [
+          { label: "Choix 1", action: "Attache-lui les mains au-dessus de la tête et prends ton temps avec lui." },
+          { label: "Choix 2", action: "Laisse-le te tenir les poignets pendant qu'il s'occupe de toi." }
+        ]
+      },
+      {
         teaser: "Le tempo…",
         choices: [
           { label: "Choix 1", action: "Le plus lentement possible : interdiction d'accélérer pendant 5 minutes." },
@@ -214,6 +263,13 @@ export const LEVELS = [
         choices: [
           { label: "Choix 1", action: "Faites l'amour dans une pièce inhabituelle de la maison." },
           { label: "Choix 2", action: "Devant le miroir : regardez-vous pendant que vous vous donnez l'un à l'autre." }
+        ]
+      },
+      {
+        teaser: "Le scénario…",
+        choices: [
+          { label: "Choix 1", action: "Jouez un petit jeu de rôle : ce soir vous n'êtes pas tout à fait vous-mêmes." },
+          { label: "Choix 2", action: "L'un dirige entièrement l'autre à la voix, pendant 5 minutes, sans le toucher." }
         ]
       },
       {

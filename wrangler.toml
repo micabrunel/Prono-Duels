@@ -1,0 +1,11 @@
+# Configuration Cloudflare Pages
+name = "duo-delice"
+compatibility_date = "2024-09-01"
+pages_build_output_dir = "public"
+
+# Les fonctions serveur sont automatiquement détectées dans le dossier /functions
+# (ex : functions/api/recap.js → route /api/recap).
+#
+# Variables d'environnement à définir dans le dashboard Cloudflare
+# (Settings → Environment variables) :
+#   RESEND_API_KEY, RECIPIENT_EMAIL, MAIL_FROM

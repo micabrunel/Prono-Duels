@@ -11,8 +11,12 @@ const state = {
 };
 
 // ---------- Helpers ----------
+const ACCESS_CODE = "2805";
+const UNLOCK_KEY = "duo-delice-unlocked";
+
 const $ = (sel) => document.querySelector(sel);
 const screens = {
+  gate: $("#screen-gate"),
   welcome: $("#screen-welcome"),
   setup: $("#screen-setup"),
   play: $("#screen-play"),
@@ -23,6 +27,23 @@ const screens = {
 function show(name) {
   Object.values(screens).forEach((s) => s.classList.remove("active"));
   screens[name].classList.add("active");
+}
+
+// ---------- Access gate ----------
+function tryUnlock() {
+  const val = ($("#code-input").value || "").trim();
+  const err = $("#gate-error");
+  if (val === ACCESS_CODE) {
+    try { localStorage.setItem(UNLOCK_KEY, "1"); } catch {}
+    show("welcome");
+  } else {
+    err.textContent = "Code incorrect 😶";
+    err.classList.remove("shake");
+    void err.offsetWidth;
+    err.classList.add("shake");
+    $("#code-input").value = "";
+    $("#code-input").focus();
+  }
 }
 
 // ---------- Setup screen ----------
@@ -221,6 +242,10 @@ function replay() {
 }
 
 // ---------- Wire up ----------
+$("#unlock").addEventListener("click", tryUnlock);
+$("#code-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") tryUnlock();
+});
 $("#go-setup").addEventListener("click", () => {
   buildLevelPicker();
   show("setup");
@@ -233,3 +258,8 @@ $("#replay").addEventListener("click", replay);
 
 // init
 buildLevelPicker();
+
+// Si déjà déverrouillé sur cet appareil, on saute le code d'accès.
+try {
+  if (localStorage.getItem(UNLOCK_KEY) === "1") show("welcome");
+} catch {}

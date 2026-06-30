@@ -15,8 +15,20 @@
   <div class="glow"></div>
   <main id="app">
 
+    <!-- ÉCRAN CODE D'ACCÈS -->
+    <section class="screen active" id="screen-gate">
+      <div class="card-panel center gate">
+        <div class="hero-emoji">🔒</div>
+        <h2>Accès privé</h2>
+        <p class="trans-text">Entre le code pour déverrouiller votre jeu.</p>
+        <input type="tel" inputmode="numeric" id="code-input" class="text-input code-input" placeholder="••••" maxlength="8" autocomplete="off" />
+        <p class="gate-error" id="gate-error"></p>
+        <button class="btn primary" id="unlock">Déverrouiller</button>
+      </div>
+    </section>
+
     <!-- ÉCRAN D'ACCUEIL -->
-    <section class="screen active" id="screen-welcome">
+    <section class="screen" id="screen-welcome">
       <div class="hero">
         <div class="hero-emoji">❤️‍🔥</div>
         <h1>Duo Délice</h1>

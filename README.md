@@ -13,7 +13,17 @@ Un petit jeu coquin et tout doux pour pimenter les soirées en couple.
 - Quand elle a fini, un **récap de la soirée est envoyé par email** (par défaut à
   `brunel.michael@gmail.com`).
 
-## Démarrage rapide
+## 🔒 Code d'accès
+
+L'app est protégée par un code à l'entrée : **`2805`**.
+Une fois entré, l'appareil reste déverrouillé (mémorisé dans le navigateur).
+Pour le changer : modifie `ACCESS_CODE` en haut de [`public/app.js`](public/app.js).
+
+> ⚠️ Le code est une simple barrière de confort, vérifiée côté navigateur.
+> Comme le site et le dépôt sont publics, considère le contenu comme « semi-privé »
+> (quelqu'un qui a l'URL et le code peut y accéder).
+
+## Démarrage rapide (en local)
 
 ```bash
 npm install
@@ -26,17 +36,35 @@ pensée pour le mobile).
 > Sans configuration email, le jeu fonctionne quand même : à la fin, il propose un
 > bouton **« Envoyer le récap manuellement »** (lien `mailto:` pré-rempli).
 
-## Activer l'envoi automatique du récap par email
+## 🚀 Déploiement sur Cloudflare Pages
 
-1. Copie le fichier d'exemple :
-   ```bash
-   cp .env.example .env
-   ```
-2. Remplis les infos SMTP. **Avec Gmail** :
-   - Active la validation en 2 étapes sur ton compte Google.
-   - Crée un *mot de passe d'application* : https://myaccount.google.com/apppasswords
-   - Mets ce mot de passe (16 caractères) dans `SMTP_PASS`.
-3. Relance `npm start`. Au démarrage, le serveur affiche `📧 Email configuré.`
+Le projet est prêt pour Cloudflare Pages (site statique + une fonction serveur
+pour l'email).
+
+1. Va sur **https://dash.cloudflare.com** → **Workers & Pages** → **Create** →
+   **Pages** → **Connect to Git**, et choisis le dépôt `Duo-Delice`.
+2. Réglages de build :
+   - **Framework preset** : `None`
+   - **Build command** : *(laisser vide)*
+   - **Build output directory** : `public`
+3. **Save and Deploy**. C'est en ligne 🎉
+
+### Activer l'envoi automatique du récap (Resend)
+
+Cloudflare ne fait pas de SMTP : l'email passe par l'API HTTP **Resend** (gratuit).
+
+1. Crée un compte sur **https://resend.com** et génère une **clé API**.
+2. Dans Cloudflare Pages → **Settings → Environment variables**, ajoute :
+   - `RESEND_API_KEY` = ta clé Resend
+   - `RECIPIENT_EMAIL` = `brunel.michael@gmail.com`
+   - `MAIL_FROM` = `Duo Délice <onboarding@resend.dev>`
+     *(ou une adresse de ton domaine vérifié dans Resend)*
+3. Redéploie. La fonction [`functions/api/recap.js`](functions/api/recap.js)
+   enverra alors le récap automatiquement.
+
+> En mode test Resend, l'expéditeur `onboarding@resend.dev` ne peut envoyer
+> qu'à l'adresse de ton propre compte Resend. Pour envoyer à n'importe quelle
+> adresse, vérifie un domaine dans Resend.
 
 ## Personnaliser le jeu
 
@@ -47,12 +75,15 @@ Tout le contenu (niveaux, cartes, actions) est dans
 ## Structure
 
 ```
-server.js              → serveur Express + envoi du récap par email
-public/index.html      → l'app
-public/styles.css      → le style
-public/app.js          → la logique du jeu
-public/data/duels.js   → le contenu (les 5 niveaux et leurs cartes)
-.env.example           → modèle de configuration email
+public/index.html        → l'app
+public/styles.css        → le style
+public/app.js            → la logique du jeu (+ le code d'accès)
+public/data/duels.js     → le contenu (les 5 niveaux et leurs cartes)
+shared/recap.js          → construction du récap (texte + email HTML)
+functions/api/recap.js   → fonction Cloudflare Pages : envoi via Resend
+server.js                → serveur local Express (dev), Resend ou SMTP
+wrangler.toml            → config Cloudflare Pages
+.env.example             → modèle de configuration email (dev local)
 ```
 
 Bon jeu 😉
