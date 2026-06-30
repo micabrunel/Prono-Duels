@@ -1,7 +1,7 @@
 {
-  "name": "prono-duels",
+  "name": "duo-delice",
   "version": "1.0.0",
-  "description": "Un petit jeu coquin pour pimenter les soirées en couple ❤️",
+  "description": "Duo Délice — un petit jeu coquin pour pimenter les soirées en couple ❤️",
   "type": "module",
   "main": "server.js",
   "scripts": {

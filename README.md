@@ -1,4 +1,4 @@
-# Prono-Duels ❤️‍🔥
+# Duo Délice ❤️‍🔥
 
 Un petit jeu coquin et tout doux pour pimenter les soirées en couple.
 

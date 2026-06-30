@@ -47,7 +47,7 @@ function buildRecap({ name, maxLevelChosen, highestReached, startedAt, history }
   );
 
   const text = [
-    `💌 Récap de la soirée Prono-Duels`,
+    `💌 Récap de la soirée Duo Délice`,
     ``,
     `${who} a joué le ${fmtDate(startedAt)}.`,
     `Limite qu'elle s'était fixée : niveau ${maxLevelChosen}.`,
@@ -77,7 +77,7 @@ function buildRecap({ name, maxLevelChosen, highestReached, startedAt, history }
   <div style="font-family:Georgia,serif;max-width:560px;margin:auto;background:#fff6f8;border-radius:18px;overflow:hidden;border:1px solid #f3c6d0;">
     <div style="background:linear-gradient(120deg,#ff8fab,#e63946);padding:26px;text-align:center;color:#fff;">
       <div style="font-size:34px;">❤️‍🔥</div>
-      <h1 style="margin:6px 0 0;font-size:24px;">Récap Prono-Duels</h1>
+      <h1 style="margin:6px 0 0;font-size:24px;">Récap Duo Délice</h1>
     </div>
     <div style="padding:22px 24px;color:#5a2230;">
       <p style="font-size:16px;line-height:1.6;">
@@ -96,7 +96,7 @@ function buildRecap({ name, maxLevelChosen, highestReached, startedAt, history }
     </div>
   </div>`;
 
-  return { text, html, subject: `💌 ${who} a joué ce soir — récap Prono-Duels (niveau ${highestReached || 0})` };
+  return { text, html, subject: `💌 ${who} a joué ce soir — récap Duo Délice (niveau ${highestReached || 0})` };
 }
 
 function escapeHtml(s = "") {
@@ -124,7 +124,7 @@ app.post("/api/recap", async (req, res) => {
 
   try {
     await transport.sendMail({
-      from: process.env.MAIL_FROM || `Prono-Duels <${process.env.SMTP_USER}>`,
+      from: process.env.MAIL_FROM || `Duo Délice <${process.env.SMTP_USER}>`,
       to: RECIPIENT,
       subject: recap.subject,
       text: recap.text,
@@ -140,6 +140,6 @@ app.post("/api/recap", async (req, res) => {
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
 app.listen(PORT, () => {
-  console.log(`❤️  Prono-Duels en ligne sur http://localhost:${PORT}`);
+  console.log(`❤️  Duo Délice en ligne sur http://localhost:${PORT}`);
   console.log(buildTransport() ? "📧 Email configuré." : "⚠️  Email non configuré (mode lien mailto).");
 });
