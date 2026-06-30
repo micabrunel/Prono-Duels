@@ -1,1 +1,1 @@
-# Duo-Delice
+Prono Duels
